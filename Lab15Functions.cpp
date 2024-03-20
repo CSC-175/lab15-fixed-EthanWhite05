@@ -4,8 +4,20 @@
 * reference parameters referencing variables in the main function. *
 *******************************************************************/
 void getInfo(int & pickFrom, int & numPicks){
+cout << "How many balls (1-12) are in the pool to pick from? ";
+        cin >> pickFrom;
+        while(pickFrom < 1 or pickFrom > 12){
 
-}
+          cout << "Input Error: Please enter a number between 1 and 12: ";
+          cin >> pickFrom;
+        }
+        cout << "How many balls (1-7) will be drawn? ";
+        cin >> numPicks;
+        while(numPicks < 1 or numPicks > 7){
+          cout << "Input Error: Please enter a number between 1 and 7: ";
+          cin >> numPicks;
+        }
+        }
 
 /******************************************************************
 * computeWays                                                     *
@@ -19,10 +31,15 @@ void getInfo(int & pickFrom, int & numPicks){
 // multiplying two factorials together. This is done to prevent any
 // intermediate result becoming so large that it causes overflow.
 double computeWays(int n, int k){
-    
+  return (factorial(k) * factorial(n-k)) / factorial(n);
 }
+
 
 // This function computes factorials recursively. It is called by computeWays.
 double factorial(int n){
-
+if(n == 0) {
+    return 1;
+} else {
+    return n * factorial(n-1);
+}
 }
